@@ -20,7 +20,7 @@ on:
     paths:
       - 'config/3800.config'
   schedule:
-    - cron: 0 8 * * 5
+      - cron: 0 8 * * 5
 #  watch:
 #    types: started
 
@@ -31,12 +31,14 @@ env:
   CONFIG_FILE: config/3800.config
   DIY_P1_SH: scripts/diy-part1.sh
   DIY_P2_SH: scripts/diy-part2.sh
-  SSH_ACTIONS: true
+  SSH_ACTIONS: false
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: true
   UPLOAD_WETRANSFER: true
   TZ: Asia/Shanghai
+  # 微信通知
+  SEND_WECHAT_MSG: false
 
 jobs:
   build:
@@ -144,3 +146,43 @@ jobs:
         curl -fsSL git.io/file-transfer | sh
         ./transfer wet -s -p 16 --no-progress ${FIRMWARE} 2>&1 | tee wetransfer.log
         echo "::warning file=wetransfer.com::$(cat wetransfer.log | grep https)"
+
+    # 生成标签
+    - name: Generate Tag
+      id: tag
+      if: steps.compile.outputs.status == 'success' && env.CREATE_RELEASE == 'true' && !cancelled()
+      run: |
+        echo ::set-env name=RELEASE_TAG::"$(TZ=UTC-8 date +"%Y-%m-%d")"
+        echo "::set-output name=status::success"
+    
+    # 发行固件
+    - name: Upload Firmware To Release
+      uses: softprops/action-gh-release@v1
+      if: steps.tag.outputs.status == 'success' && !cancelled()
+      env:
+        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+      with:
+        name: Netgear ${{ env.BRANCH }} 🚀 | 自动编译 / ${{ env.RELEASE_TAG }}
+        tag_name: ${{ env.RELEASE_DATE }}
+        body: |            
+            1、本固件为自动编译
+            2、发行版中只提供完整的固件
+            3、需要单独IPK请到分支下载
+            4、源码：${{ env.REPO_URL }}
+            -- Build by chouniu @ with Github Action on ${{ env.RELEASE_DATE }}
+            🚀 Auto build | 自动编译
+            🔗 [Cowtransfer | 奶牛快传](${{ env.COWTRANSFER_URL }}) 
+            🔗 [WeTransfer](${{ env.WETRANSFER_URL }})       
+            当前使用版本:（编译前的最后一次大雕源码更新记录）            
+            ${{ env.useVersionInfo }}
+            ${{ github.event.commits[0].message }}
+        files: ${{ env.FIRMWARE }}/*
+
+    # 微信通知
+    - name: WeChat Notification
+      if: steps.compile.outputs.status == 'success' && env.SEND_WECHAT_MSG == 'true' && !cancelled()
+      uses: emon100/Action-Serverchan@master
+      with:
+        SCKEY: ${{ secrets.SCKEY }}
+        text: ${{ env.BRANCH }}固件编译完成！
+        desp: 源码:${{ env.REPO_URL }} 分支：${{ env.REPO_BRANCH }}
