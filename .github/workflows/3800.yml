@@ -27,6 +27,7 @@ on:
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
+  EX_PKG: true
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: config/3800.config
   DIY_P1_SH: scripts/diy-part1.sh
