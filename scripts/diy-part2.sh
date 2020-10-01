@@ -19,7 +19,7 @@ rm -rf luci-theme-argon
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon luci-theme-argon
 
 # 更改主题
-sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' ../feeds/luci/collections/luci/Makefile
+sed -i 's/ +luci-theme-bootstrap//g' feeds/luci/collections/luci/Makefile 
 
 # 更改时区
 sed -i "s/'UTC'/'CST-8'\n        set system.@system[-1].zonename='Asia\/Shanghai'/g" ../package/base-files/files/bin/config_generate
@@ -94,13 +94,6 @@ sed -i "/commit luci/i\uci set luci.main.mediaurlbase='/luci-static/argon'" zzz-
 sed -i '/http/d' zzz-default-settings
 sed -i '/exit/i\chmod +x /bin/ipv6-helper' zzz-default-settings
 popd
-
-# 设置默认管理IP地址
-uci set network.lan.ipaddr='192.168.10.1'
-uci set network.lan.netmask='255.255.255.0'
-uci set network.lan.delegate='0'
-uci set network.wan.delegate='0'
-uci commit network
 
 # Add po2lmo
 git clone https://github.com/openwrt-dev/po2lmo.git
