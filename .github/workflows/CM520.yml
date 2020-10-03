@@ -18,7 +18,7 @@ on:
     branches:
       - main
 
-     paths:
+    paths:
       - 'config/CM520.config'
   schedule:
     - cron: 0 0 * * 5

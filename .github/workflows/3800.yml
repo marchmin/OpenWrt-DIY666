@@ -19,7 +19,7 @@ on:
       - main
 
  
-     paths:
+    paths:
       - 'config/CM520.config'
       - 'README.md'
   schedule:
