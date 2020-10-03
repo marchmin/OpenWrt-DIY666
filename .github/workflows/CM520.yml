@@ -19,6 +19,7 @@ on:
       - main
     paths:
       - 'config/CM520.config'
+      - 'README.md'
   schedule:
     - cron: 0 0 * * 5
 #  watch:
