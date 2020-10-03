@@ -20,7 +20,7 @@ on:
     paths:
       - 'config/Lean_Docker_LEDE_N1.config'
   schedule:
-    - cron: 0 4 * * 5
+    - cron: 0 0 * * 5
 #  watch:
 #    types: started
 
