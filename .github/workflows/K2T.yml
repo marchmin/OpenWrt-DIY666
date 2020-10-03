@@ -17,7 +17,7 @@ on:
   push:
     branches:
       - main
-    paths:
+
       - 'config/Lean_LEDE_K2T.config'
   schedule:
     - cron: 0 0 * * 5

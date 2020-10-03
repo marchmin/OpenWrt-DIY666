@@ -17,7 +17,7 @@ on:
   push:
     branches:
       - main
-    paths:
+
       - 'config/r3p.config'
   schedule:
     - cron: 0 0 * * 5

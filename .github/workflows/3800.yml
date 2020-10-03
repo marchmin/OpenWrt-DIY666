@@ -17,7 +17,8 @@ on:
   push:
     branches:
       - main
-    paths:
+
+ 
      paths:
       - 'config/CM520.config'
       - 'README.md'

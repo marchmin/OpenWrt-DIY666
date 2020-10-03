@@ -17,7 +17,7 @@ on:
   push:
     branches:
       - main
-    paths:
+
       - 'config/k3.config'
   schedule:
     - cron: 0 0 * * 5
