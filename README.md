@@ -53,7 +53,10 @@ OpenWrt DIY — 多设备固件云编译
 4. 如有什么问题、需要增加编译设备或者编译文件配置需要调整的，**可以直接在 Issues 内留言。** 我会不定时的根据大家的要求修改**编译配置，插件选项，增加编译设备**等；
 
 5. 本项目旨在让更多朋友的设备能用上稳定且功能强大的 OpenWrt 固件，并保持持续更新。也希望动手能力强的朋友去学习编译（后文有教程），然后根据你自己的需要配置 menuconfig，把配置好的 config 文件提交到本项目，本项目更可以根据使用者的需求扩充更多设备。
-
+## 2020.10.3更新
+lean 大更新了v2ray
+  -URL:=https://github.com/v2ray/domain-list-community/releases/$(GEOSITE_VER)/download
+  +URL:=https://github.com/v2fly/domain-list-community/releases/$(GEOSITE_VER)/download
 ## 近期更新 [![](https://img.shields.io/badge/-近期更新-F5F5F5.svg)](#近期更新-)
 
 1. 引入 Lienol 的 Packages，引入 Passwall 等插件（部分设备因为容量限制没有添加——2020.9.7）；
