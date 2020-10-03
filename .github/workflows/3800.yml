@@ -15,8 +15,6 @@ on:
   release:
     types: published
   push:
-    branches:
-      - main
     paths:
       - 'config/CM520.config'
       - 'README.md'
