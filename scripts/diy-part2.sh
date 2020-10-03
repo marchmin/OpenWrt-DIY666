@@ -26,7 +26,7 @@ sed -i "s/'UTC'/'CST-8'\n        set system.@system[-1].zonename='Asia\/Shanghai
 
 # Add Project OpenWrt's autocore
 rm -rf autocore
-svn co https://github.com/coolsnowwolf/lede/tree/master/package/lean/autocore
+svn co https://github.com/project-openwrt/openwrt/branches/18.06-kernel5.4/package/lean/autocore
 popd
 
 # Add mentohust & luci-app-mentohust.
