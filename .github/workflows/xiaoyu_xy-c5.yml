@@ -17,7 +17,7 @@ on:
   push:
     branches:
       - main
-
+    paths:
       - 'config/xiaoyu_xy-c5.config'
   schedule:
     - cron: 0 0 * * 5

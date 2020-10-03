@@ -17,7 +17,7 @@ on:
   push:
     branches:
       - main
-
+    paths:
       - 'config/redmi_ac2100.config'
   schedule:
     - cron: 0 0 * * 5

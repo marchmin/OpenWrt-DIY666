@@ -17,7 +17,7 @@ on:
   push:
     branches:
       - main
-
+    paths:
       - 'config/Lean_Docker_LEDE_N1.config'
   schedule:
     - cron: 0 0 * * 5

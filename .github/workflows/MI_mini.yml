@@ -17,7 +17,7 @@ on:
   push:
     branches:
       - main
-
+    paths:
       - 'config/Mi_mini.config'
   schedule:
     - cron: 0 0 * * 5
