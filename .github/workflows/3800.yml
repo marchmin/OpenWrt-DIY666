@@ -11,9 +11,6 @@
 name: Build Netgear 3800 OpenWrt
 
 on:
-  repository_dispatch:
-  release:
-    types: published
   push:
     paths:
       - 'config/CM520.config'
