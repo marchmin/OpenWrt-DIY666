@@ -184,3 +184,4 @@ jobs:
         text: ${{ env.BRANCH }}固件编译完成！
         desp:  Netgear WNDR4300 🚀 | 自动编译 /1、本固件为自动编译2、发行版中只提供完整的固件3、需要单独IPK请到分支下载4、源码：${{ env.REPO_URL }}-- Build by chouniu @ with Github Action on ${{ env.RELEASE_DATE }} 🚀 Auto build | 自动编译🔗 [Cowtransfer | 奶牛快传](${{ env.COWTRANSFER_URL }}) 🔗 [WeTransfer](${{ env.WETRANSFER_URL }})当前使用版本:（编译前的最后一次大雕源码更新）${{ env.useVersionInfo }}${{ github.event.commits[0].message }}     
           
+
