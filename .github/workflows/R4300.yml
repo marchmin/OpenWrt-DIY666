@@ -21,7 +21,9 @@ on:
       - 'config/R4300.config'
   schedule:
     - cron: 0 0 * * 1
-#  watch:
+      
+#点☆Star触发开始编译
+  watch:
 #    types: started
 
 env:
