@@ -21,7 +21,7 @@ on:
       - 'config/3800.config'
   schedule:
     - cron: 0 0 * * 1
-#  watch:
+  watch:
 #    types: started
 
 env:
