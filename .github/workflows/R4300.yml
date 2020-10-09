@@ -19,8 +19,10 @@ on:
       - main
     paths:
       - 'config/R4300.config'
-  schedule:
-    - cron: 0 0 * * 1
+        
+#定时触发开始编译
+#  schedule:
+#    - cron: 0 0 * * 1
       
 #点☆Star触发开始编译
   watch:
